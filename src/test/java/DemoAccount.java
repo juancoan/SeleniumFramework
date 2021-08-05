@@ -17,12 +17,12 @@ public class DemoAccount {
         WebDriverManager.chromedriver().setup();
     }
 
-    //@Ignore -> para ignorar el test
+    @Ignore
     @Test
     public void test_capabilities(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--window-size=1700,800");
-        options.addArguments("--headless"); //corre sin abrir el browser
+        options.addArguments("--headless");
         options.setHeadless(true);
         options.setAcceptInsecureCerts(true);
 
@@ -33,7 +33,7 @@ public class DemoAccount {
         //driver.manage().window().maximize();
 
         driver.quit();
-        //driver.close();
+        driver.close();
     }
 
     @Test
@@ -49,7 +49,7 @@ public class DemoAccount {
         try{
             result = wait.until(
                     ExpectedConditions.textToBe(
-                        By.className("progress-label"),"Complete!"));
+                            By.className("progress-label"),"Complete!"));
         }
         catch (WebDriverException exception){
             System.out.println("No funcionó");
